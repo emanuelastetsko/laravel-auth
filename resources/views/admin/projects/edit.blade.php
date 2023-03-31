@@ -6,16 +6,14 @@
         <h1 class="my-3">Update Project</h1>
         <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
             @csrf
-
             @method('PUT')
-
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" value="{{ old('name', $project->name) }}" id="title" required maxlength="100" placeholder="Write the name of the project...">
+                <label for="name" class="form-label">Title</label>
+                <input type="text" class="form-control" name="name" value="{{ old('name', $project->name) }}" id="name" required maxlength="100" placeholder="Write the name of the project...">
             </div>
             <div class="mb-3">
-                <label for="slug" class="form-label">Description</label>
-                <input type="text" class="form-control" name="slug" id="slug" value="{{ old('description', $project->description) }}" required maxlength="100" placeholder="Write the description...">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="description" id="description" value="{{ old('description', $project->description) }}" required maxlength="100" placeholder="Write the description...">
             </div>
 
             <div>

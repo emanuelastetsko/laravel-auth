@@ -48,7 +48,7 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}" href="{{route('admin.projects.index')}}">
-                                        <i class="fa-solid fa-file"></i> Projects
+                                        <i class="fa-solid fa-file-pen fa-lg fa-fw"></i> Projects
                                     </a>
                                 </li>
                             </ul>
