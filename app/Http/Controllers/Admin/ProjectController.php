@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
@@ -15,7 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -25,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -36,7 +39,11 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $newProject = Project::create($data);
+
+        return redirect()->route('admin.projects.show', $newProject->id)->with('success', 'New project has been created successfully!');
     }
 
     /**
@@ -47,7 +54,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -58,7 +65,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -70,7 +79,12 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+        $data = $request->validated();
+ 
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project->id)->with('success', 'The project has been updated successfully!');
     }
 
     /**
@@ -81,6 +95,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        
+        $project->delete();
+
+        return redirect()->route('admin.projects.index')->with('success', 'Thr project has been remove successfully!');
     }
 }
