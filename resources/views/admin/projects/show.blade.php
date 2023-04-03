@@ -15,9 +15,11 @@
                         {{ $project->description }}
                     </p>
                 </div>
-                <div>
-                    <img src="{{ asset('/storage/cucciolotenero.jpg')}}" alt="Cucciolo" class="my-img-small">
-                </div>
+                @if ($project->img)
+                    <div>
+                        <img src="{{ asset( 'storage/' . $project->img )}}" alt="Image" class="my-img-small">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

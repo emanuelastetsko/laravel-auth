@@ -26,6 +26,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => 'required | max: 128',
             'description' =>  'required | max: 500',
+            'img'=> 'max:2048|image'
         ];
     }
 }

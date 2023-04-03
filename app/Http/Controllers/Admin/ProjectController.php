@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+
+//Models
 use App\Models\Project;
+
+//Helpers
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -40,6 +45,11 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
+
+        if (array_key_exists('img', $data)) {
+            $imgPath = Storage::put('projects', $data['img']);
+            $data['img'] = $imgPath;
+        }
 
         $newProject = Project::create($data);
 
@@ -79,6 +89,15 @@ class ProjectController extends Controller
     {
 
         $data = $request->validated();
+
+        if(array_key_exists('img', $data)) {
+            $imgPath = Storage::put('projects', $data['img']);
+            $data['img'] = $imgPath;
+
+            if($project->img) {
+                Storage::delete($project->img);
+            }
+        }
  
         $project->update($data);
 

@@ -4,7 +4,7 @@
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <h1 class="my-3">Update Project</h1>
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -14,6 +14,10 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control" name="description" id="description" value="{{ old('description', $project->description) }}" required maxlength="100" placeholder="Write the description...">
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Image</label>
+                <input type="file" class="form-control" name="img" id="img" value="{{ old('img') }}">
             </div>
 
             <div>
