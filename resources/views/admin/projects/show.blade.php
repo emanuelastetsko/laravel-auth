@@ -15,6 +15,9 @@
                         {{ $project->description }}
                     </p>
                 </div>
+                <div>
+                    <img src="{{ asset('/storage/cucciolotenero.jpg')}}" alt="Cucciolo" class="my-img-small">
+                </div>
             </div>
         </div>
     </div>

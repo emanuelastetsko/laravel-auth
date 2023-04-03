@@ -1,1 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
+
+.my-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.my-img-small{
+    width: 30%;
+    margin-bottom: 30px;
+}

@@ -11,6 +11,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -20,6 +21,9 @@
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->description }}</td>
+                        <td>
+                            <img src="{{ asset('/storage/cucciolotenero.jpg')}}" alt="Cucciolo" class="my-img">
+                        </td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary mb-2">
                                 <i class="fa-solid fa-eye"></i>
